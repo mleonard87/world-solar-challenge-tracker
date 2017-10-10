@@ -135,7 +135,7 @@ class Map extends Component {
           number: p.number,
         }
       }),
-      iconAtlas: "/carmap.png",
+      iconAtlas: process.env.PUBLIC_URL + "/carmap.png",
       iconMapping: ICON_MAPPING,
       pickable: true,
       onClick: (info) => {
