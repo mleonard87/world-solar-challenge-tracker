@@ -21,11 +21,13 @@ class App extends Component {
 
   fetchPositions = () => {
     const comp = this;
-    fetch('http://cors-proxy.htmldriven.com/?url=https://www.worldsolarchallenge.org/api/positions').then(function(response) {
+    fetch(
+      'https://cors-anywhere.herokuapp.com/https://www.worldsolarchallenge.org/api/positions',
+    ).then(function(response) {
       return response.json();
     }).then(function(json) {
       comp.setState({
-        positions: JSON.parse(json.body),
+        positions: json,
       });
     });
   };
