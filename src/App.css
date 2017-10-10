@@ -1,0 +1,107 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.auto-suggest-container {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+}
+
+.car-info-container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: white;
+  padding: 10px 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  max-width: 18em;
+}
+
+.car-info-container label {
+  display: block;
+  padding: 1em 0;
+  font-size: 0.9em;
+}
+
+.car-info-container .label {
+  width: 12em;
+  display: inline-block;
+}
+
+.car-info-container .value {
+  color: #999;
+}
+
+.car-info-container h1 {
+  font-size: 1.4em;
+}
+
+.car-info-container h2 {
+  font-size: 1.2em;
+}
+
+.car-info-container .gps-info {
+  margin-top: 2em;
+  font-size: 0.8em;
+  color: #aaa;
+  font-style: italic;
+}
+
+.car-info-container .car-class {
+  margin: 0.8em 0;
+  color: #999;
+  font-size: 1.2em;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.car-info-container .clear-selected {
+  position: absolute;
+  top: 0.6em;
+  right: 0.6em;
+  font-size: 0.9em;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.car-info-container .clear-selected:hover {
+  text-decoration: underline;
+}
+
+.car-info-container ul {
+  list-style: none;
+  margin: 0;
+  margin-top: 1em;
+  padding: 0;
+  font-size: 0.9em;
+}
