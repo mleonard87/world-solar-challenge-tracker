@@ -45,6 +45,11 @@ class CarInfo extends Component {
         </label>
 
         <label>
+          <span className="label">Estimated Speed</span>
+          <span className="value">{this.props.estimatedSpeed}</span>
+        </label>
+
+        <label>
           <span className="label">Trailered</span>
           <span className="value">{this.props.selectedCar.trailered === 0 ? 'No' : 'Yes'}</span>
         </label>

@@ -10,6 +10,7 @@ class App extends Component {
 
     this.state = {
       positions: null,
+      previousPositions: {},
       searchValue: '',
     };
   }
@@ -26,8 +27,44 @@ class App extends Component {
     ).then(function(response) {
       return response.json();
     }).then(function(json) {
+
+      let previousPositions = comp.state.previousPositions;
+
+      for (let i in json) {
+        const car = json[i];
+        const previous = previousPositions[car.id];
+        if (previous) {
+
+          if (car.gps_when !== previous.gps_when) {
+            const distTravelled = car.dist_darwin - previous.dist_darwin;
+            const startTime = new Date(previous.gps_when);
+            const endTime = new Date(car.gps_when);
+            const durationSecs = (endTime - startTime) / 1000;
+
+            if (car.id === "128") {
+              console.log(startTime, endTime);
+              console.log('duration', durationSecs, 'distTravelled:', distTravelled);
+            }
+
+            previousPositions[car.id] = {
+              gps_when: car.gps_when,
+              dist_darwin: car.dist_darwin,
+              speed: ((distTravelled / durationSecs) * 60 * 60).toPrecision(4) + " km/h",
+            }
+          }
+
+        } else {
+          previousPositions[car.id] = {
+            gps_when: car.gps_when,
+            dist_darwin: car.dist_darwin,
+            speed: "Please wait...",
+          }
+        }
+      }
+
       comp.setState({
         positions: json,
+        previousPositions: previousPositions,
       });
     });
   };
@@ -104,6 +141,7 @@ class App extends Component {
           ? <CarInfo
               selectedCar={selectedCar}
               clearSelected={() => this.handleOnChangeSearch('')}
+              estimatedSpeed={this.state.previousPositions[selectedCar.id].speed}
               />
           : null}
       </div>
