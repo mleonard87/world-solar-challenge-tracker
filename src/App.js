@@ -41,15 +41,13 @@ class App extends Component {
             const endTime = new Date(car.gps_when);
             const durationSecs = (endTime - startTime) / 1000;
 
-            if (car.id === "128") {
-              console.log(startTime, endTime);
-              console.log('duration', durationSecs, 'distTravelled:', distTravelled);
-            }
+            let speed = ((distTravelled / durationSecs) * 60 * 60).toPrecision(4);
+            speed = speed >= 0 ? speed : 0;
 
             previousPositions[car.id] = {
               gps_when: car.gps_when,
               dist_darwin: car.dist_darwin,
-              speed: ((distTravelled / durationSecs) * 60 * 60).toPrecision(4) + " km/h",
+              speed: speed + " km/h",
             }
           }
 
